@@ -16,6 +16,10 @@ foreach($_cityData as $item) {
 	// 	$item["name"],
 	// 	$item["population"]
 	// ];
+	$country[$item["country"]][]=[
+		$countryCode[$item["country"]] . ", " . $item["name"] ." (".$item["country"] . ")",
+		$item["population"]
+	];
 	$cities[]=[
 		$countryCode[$item["country"]] . ", " . $item["name"] ." (".$item["country"] . ")",
 		$item["population"]
@@ -23,3 +27,7 @@ foreach($_cityData as $item) {
 }
 // print_r($cities);
 file_put_contents("result.json", json_encode($cities));
+foreach($country as $name=>$item) {
+	file_put_contents("countryCode/".$name. ".json", json_encode($item));
+	file_put_contents("countryName/".$countryCode[$name]. ".json", json_encode($item));
+}
