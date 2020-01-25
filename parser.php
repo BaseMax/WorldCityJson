@@ -11,6 +11,7 @@ $_cityData=file_get_contents("cityData.json");
 $_cityData=json_decode($_cityData, true);
 // print_r($_cityData);
 $cities=[];
+$country=[];
 foreach($_cityData as $item) {
 	// $cities[$item["country"]][]=[
 	// 	$item["name"],
@@ -32,6 +33,7 @@ foreach($country as $name=>$item) {
 	file_put_contents("countryName/".$countryCode[$name]. ".json", json_encode($item));
 }
 /////////////////////
+$country=[];
 $cities=[];
 foreach($_cityData as $item) {
 	$country[$item["country"]][]=[
