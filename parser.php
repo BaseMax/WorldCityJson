@@ -31,3 +31,18 @@ foreach($country as $name=>$item) {
 	file_put_contents("countryCode/".$name. ".json", json_encode($item));
 	file_put_contents("countryName/".$countryCode[$name]. ".json", json_encode($item));
 }
+/////////////////////
+$cities=[];
+foreach($_cityData as $item) {
+	$country[$item["country"]][]=[
+		$countryCode[$item["country"]], $item["name"], $item["country"], $item["population"]
+	];
+	$cities[]=[
+		$countryCode[$item["country"]], $item["name"], $item["country"], $item["population"]
+	];
+}
+file_put_contents("cleanResult.json", json_encode($cities));
+foreach($country as $name=>$item) {
+	file_put_contents("cleanCountryCode/".$name. ".json", json_encode($item));
+	file_put_contents("cleanCountryName/".$countryCode[$name]. ".json", json_encode($item));
+}
